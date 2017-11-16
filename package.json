@@ -13,7 +13,8 @@
   ],
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "start npm run start-watch && start gulp"
   },
   "babel": {
     "presets": [
