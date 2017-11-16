@@ -14,7 +14,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "watch": "nodemon server.js"
+    "watch": "nodemon server.js",
+    "postinstall": "gulp build && node ./node_modules/bower/bin/bower install"
   },
   "babel": {
     "presets": [
