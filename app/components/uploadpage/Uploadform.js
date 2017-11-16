@@ -7,27 +7,11 @@ import Option from 'muicss/lib/react/option';
 import Button from 'muicss/lib/react/button';
 import Countries from './countries';
 import fetch from 'isomorphic-fetch';
-import AlertContainer from 'react-alert';
 import ImageUploader from './imageUpload';
 
 
 
 export default class Uploadform extends Component {
-	alertOptions() {
-		offset = 14,
-			position = 'bottom left',
-			theme = 'dark',
-			time = 5000,
-			transition = 'scale'
-	}
-
-	showAlert(e) {
-		this.msg.show('Your bot has been successfully uploaded', {
-			time: 2000,
-			type: 'success',
-			icon: <img src="img/gg.jpeg" />
-		})
-	}
 	constructor() {
 		super()
 		this.state = {
@@ -79,11 +63,15 @@ export default class Uploadform extends Component {
 			return res;
 			console.log('Data has been sent to the server')
 		}).catch(err => err);
+
+
+
+
+
 	}
 
 
 	render() {
-
 		var formstyle = {
 			border: 'grey solid 2px',
 			borderRadius: '4px',
@@ -101,8 +89,10 @@ export default class Uploadform extends Component {
 		};
 		var header = {
 			color: 'black',
-			textAlign: 'center',
-			transition: 'scale'
+			textAlign: 'center'
+		};
+		var botheader = {
+			marginLeft: '400px'
 		};
 		return (
 			<div>
@@ -111,11 +101,11 @@ export default class Uploadform extends Component {
 						<div className="container-fluid">
 
 							<ul className="nav navbar-nav">
-								<li><a href="#">Home</a></li>
+								<li ><a href="/">Home</a></li>
 								<li className="active"><a href="/upload">Upload</a></li>
 							</ul>
-							<div style={header} className="navbar-header">
-								<a className="navbar-brand head text-center" href="#">BOT STORE</a>
+							<div style={botheader} className="navbar-header">
+								<a className="navbar-brand" href="#">BOT STORE</a>
 							</div>
 						</div>
 					</nav>
@@ -129,15 +119,15 @@ export default class Uploadform extends Component {
 						<Select name="country" floatingLabel={true} onChange={e => this.onChange(e)}>
 							<Countries />
 						</Select>
-						<ImageUploader />
+						
+						<ImageUploader />	
 						<Select name="category" label="Bot Category" defaultValue="Music" onChange={e => this.onChange(e)}>
 							<Option value="Games" label="Games" />
 							<Option value="Music" label="Music" />
 							<Option value="Entertainment" label="Entertainment" />
 							<Option value="Health" label="Health" />
 						</Select>
-						<Button onClick={e => this.showAlert(e)} color="primary">Upload</Button>
-						<AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
+						<Button onClick={(e) => this.onSubmit(e)} color="primary">Upload</Button>
 					</form>
 				</div>
 			</div>
