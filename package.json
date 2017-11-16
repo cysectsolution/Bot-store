@@ -13,9 +13,7 @@
   ],
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "watch": "nodemon server.js",
-    "postinstall": "gulp"
+    "start": "node server.js"
   },
   "babel": {
     "presets": [
